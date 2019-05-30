@@ -1,9 +1,11 @@
+import { version } from '../package.json';
+
 const program = require('commander');
 
 export default () => {
   program
-    .version('0.1.0')
     .description('Compares two configuration files and shows a difference.')
+    .version(version)
     .option('-V, --version', 'output the version number')
     .option('-f, --format <type>', 'output format')
     .arguments('<firstConfig> <secondConfig>')
