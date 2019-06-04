@@ -8,6 +8,7 @@
     "calculator"
   ],
   "scripts": {
+    "test": "jest",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
   },
@@ -17,6 +18,9 @@
   "files": [
     "dist"
   ],
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
     "commander": "^2.20.0",
     "readline-sync": "^1.4.9"
@@ -27,9 +31,13 @@
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.4",
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-babel": "^5.3.0",
-    "eslint-plugin-import": "^2.17.2"
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.6.4",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0"
   }
 }
