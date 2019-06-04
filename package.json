@@ -24,8 +24,7 @@
   },
   "dependencies": {
     "commander": "^2.20.0",
-    "lodash": "^4.17.11",
-    "readline-sync": "^1.4.9"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
