@@ -8,6 +8,7 @@ plugins:
 extends:
   - 'airbnb-base'
   - 'plugin:jest/recommended'
+  - 'plugin:lodash-fp/recommended'
 
 env:
   node: true
