@@ -12,11 +12,7 @@ const run = () => {
     .option('-V, --version', 'output the version number')
     .option('-f, --format <type>', 'output format')
     .arguments('<firstConfig> <secondConfig>')
-    .action((cmd, env) => {
-      console.log(cmd);
-      console.log(env);
-      diff();
-    });
+    .action((firstConfig, secondConfig) => diff(firstConfig, secondConfig));
 
   program.parse(process.argv);
 };
