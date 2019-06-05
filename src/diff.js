@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { uniq, has } from 'lodash/fp';
 
 export const readFile = (path) => {
   try {
@@ -12,18 +13,38 @@ export const readFile = (path) => {
   return null;
 };
 
-// firstConfig, secondConfig
-export default () => {
-  // try {
-  //   const firstFile = fs.readFileSync(firstConfig, 'utf8');
-  //   const firstData = JSON.parse(firstFile);
-  //   const secondFile = fs.readFileSync(secondConfig, 'utf8');
-  //   const secondData = JSON.parse(secondFile);
-  //   console.log(firstData);
-  // } catch (e) {
-  //   console.log('Error:', e.stack);
-  // }
-  const result = '{\n  host: hexlet.io\n  + timeout: 20\n  - timeout: 50\n  - proxy: 123.234.53.22\n  + verbose: true\n  - follow: false\n}';
+export default (firstConfig, secondConfig) => {
+  const firstJson = readFile(firstConfig);
+  const secondJson = readFile(secondConfig);
+  const firstData = JSON.parse(firstJson);
+  const secondData = JSON.parse(secondJson);
+  const keys = [...Object.keys(firstData), ...Object.keys(secondData)];
+  const uniqKeys = uniq(keys);
+
+  const diff = uniqKeys.reduce((acc, key) => {
+    const hasFirstKey = has(key)(firstData);
+    const hasSecondKey = has(key)(secondData);
+    const firstValue = firstData[key];
+    const secondValue = secondData[key];
+
+    if (hasFirstKey && hasSecondKey) {
+      if (firstValue === secondValue) {
+        // w/o change
+        acc.push(`    ${key}: ${firstValue}`);
+      } else {
+        // changed
+        acc.push(`  - ${key}: ${firstValue}`);
+        acc.push(`  + ${key}: ${secondValue}`);
+      }
+    } else {
+      // add/delete
+      acc.push(hasSecondKey ? `  + ${key}: ${secondValue}` : `  - ${key}: ${firstValue}`);
+    }
+
+    return acc;
+  }, []);
+
+  const result = `{\n${diff.join('\n')}\n}`;
 
   return result;
 };
