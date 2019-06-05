@@ -6,10 +6,15 @@
 
 `npm install -g gaff`
 
-[![asciicast](https://asciinema.org/a/Ofw3F2I6qqDmXATt59tKPwQ4l.svg)](https://asciinema.org/a/Ofw3F2I6qqDmXATt59tKPwQ4l)
+[![asciicast](https://asciinema.org/a/RTeOVjQIR7srlglyOcE38SD2Z.svg)](https://asciinema.org/a/RTeOVjQIR7srlglyOcE38SD2Z)
 
 ## Run
 
-`gendiff -h` – show app help
+`gendiff -h` – show help
 
-[![asciicast](https://asciinema.org/a/kiYvGcnKGzC3WlUkFpZkJfvcf.svg)](https://asciinema.org/a/kiYvGcnKGzC3WlUkFpZkJfvcf)
+[![asciicast](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl.svg)](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl)
+
+
+`gendiff <firstConfig> <secondConfig>` – show the difference between two configs
+
+[![asciicast](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI.svg)](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI)
