@@ -1,23 +1,10 @@
-import fs from 'fs';
 import { uniq, has } from 'lodash/fp';
 
-export const readFile = (path) => {
-  try {
-    const data = fs.readFileSync(path, 'utf8');
-
-    return data;
-  } catch (e) {
-    console.log('Error:', e.stack);
-  }
-
-  return null;
-};
+import parser from './parsers';
 
 export default (firstConfig, secondConfig) => {
-  const firstJson = readFile(firstConfig);
-  const secondJson = readFile(secondConfig);
-  const firstData = JSON.parse(firstJson);
-  const secondData = JSON.parse(secondJson);
+  const firstData = parser(firstConfig);
+  const secondData = parser(secondConfig);
   const keys = [...Object.keys(firstData), ...Object.keys(secondData)];
   const uniqKeys = uniq(keys);
 
