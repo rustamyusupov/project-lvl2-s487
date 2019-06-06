@@ -24,7 +24,5 @@ export default (filePath) => {
   const ext = path.extname(filePath).replace('.', '');
   const parsedData = mapping[ext](data);
 
-  console.log(parsedData);
-
   return parsedData;
 };
