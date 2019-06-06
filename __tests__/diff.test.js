@@ -1,5 +1,5 @@
 import diff from '../src';
-import { readFile } from '../src/diff';
+import { readFile } from '../src/parsers';
 
 const generateTest = ext => test(`compare ${ext} files`, () => {
   const firstConfig = `__tests__/__fixtures__/before.${ext}`;
