@@ -18,3 +18,4 @@
 `gendiff <firstConfig> <secondConfig>` – show the difference between two configs
 
 [![asciicast](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI.svg)](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI)
+[![asciicast](https://asciinema.org/a/yzVo599BQXYynbFPtn8yLjXo6.svg)](https://asciinema.org/a/yzVo599BQXYynbFPtn8yLjXo6)
