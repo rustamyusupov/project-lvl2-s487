@@ -15,7 +15,8 @@
 [![asciicast](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl.svg)](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl)
 
 
-`gendiff <firstConfig> <secondConfig>` – show the difference between two configs
+`gendiff <firstConfig> <secondConfig>` – show the difference between two configs (json, yaml, ini)
 
 [![asciicast](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI.svg)](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI)
 [![asciicast](https://asciinema.org/a/eZ4IKLTmzddGwKuLnTKK7nsns.svg)](https://asciinema.org/a/eZ4IKLTmzddGwKuLnTKK7nsns)
+[![asciicast](https://asciinema.org/a/FNQZ6hPDjAng40KofVsFr4CDK.svg)](https://asciinema.org/a/FNQZ6hPDjAng40KofVsFr4CDK)
