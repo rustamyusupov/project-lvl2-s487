@@ -1,15 +1,12 @@
 import diff from '../src';
 import { readFile } from '../src/parsers';
 
-const generateTest = ext => test(`compare ${ext} files`, () => {
-  const firstConfig = `__tests__/__fixtures__/before.${ext}`;
-  const secondConfig = `__tests__/__fixtures__/after.${ext}`;
-  const resultFilePath = '__tests__/__fixtures__/result.txt';
+const paths = ['json', 'yaml'].map(ext => [
+  ext,
+  `__tests__/__fixtures__/before.${ext}`,
+  `__tests__/__fixtures__/after.${ext}`,
+]);
 
-  const filesDiff = diff(firstConfig, secondConfig);
-  const result = readFile(resultFilePath);
-
-  expect(filesDiff).toBe(result);
+test.each(paths)('compare %s files', (_, firstConfig, secondConfig) => {
+  expect(diff(firstConfig, secondConfig)).toBe(readFile('__tests__/__fixtures__/result.txt'));
 });
-
-['json', 'yaml'].map(generateTest);
