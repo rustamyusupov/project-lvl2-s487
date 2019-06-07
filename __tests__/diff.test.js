@@ -1,7 +1,7 @@
 import diff from '../src';
 import { readFile } from '../src/parsers';
 
-const paths = ['json', 'yaml'].map(ext => [
+const paths = ['json', 'yaml', 'ini'].map(ext => [
   ext,
   `__tests__/__fixtures__/before.${ext}`,
   `__tests__/__fixtures__/after.${ext}`,
