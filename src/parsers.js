@@ -1,10 +1,12 @@
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import ini from 'ini';
 
 const mapping = {
   json: f => JSON.parse(f),
   yaml: f => yaml.safeLoad(f, 'utf8'),
+  ini: f => ini.parse(f, 'utf8'),
 };
 
 export const readFile = (filePath) => {
