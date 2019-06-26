@@ -11,7 +11,7 @@ const getNode = (key, type, valueBefore, valueAfter = '', children = []) => ({
 const diff = (firstData, secondData) => {
   const keys = _.union(Object.keys(firstData), Object.keys(secondData));
 
-  return keys.map((key) => {
+  return keys.sort().map((key) => {
     const firstValue = firstData[key];
     const secondValue = secondData[key];
     const hasFirstKey = _.has(key)(firstData);
