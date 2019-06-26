@@ -1,123 +1,44 @@
-import {
-  uniq, has, isObject, flatten,
-} from 'lodash/fp';
+import _ from 'lodash/fp';
 
-import parser from './parsers';
+const getNode = (key, type, valueBefore, valueAfter = '', children = []) => ({
+  key,
+  type,
+  valueBefore,
+  valueAfter,
+  children,
+});
 
-// [
-//   {
-//     key: 'test',
-//     operation: 'none',
-//     children: [
-//       {
-//         key: 'test1',
-//         operation: 'add',
-//         values: 200,
-//       },
-//       {
-//         key: 'test2',
-//         operation: 'delete',
-//         children: [...],
-//       }
-//     ]
-//   },
-//   {
-//     key: 'test3',
-//     operation: 'none',
-//     value: 'bar'
-//   }
-// ]
+const diff = (firstData, secondData) => {
+  const keys = _.union(Object.keys(firstData), Object.keys(secondData));
 
-// 1. первый есть, а второго нет -> operation: 'delete', value: {firstValue}
-// 2. первого нет, а второй есть -> operation: 'add', value: {secondValue}
-// 3. первый и второй есть
-// 3.1. первый и второй объекты -> operation: 'none', children: diff()
-// 3.2. первый и второй равны -> operation: 'none', value: {firstValue}
-// 3.3. первый и второй не равны -> operation: 'change', value: {secondValue}
+  return keys.map((key) => {
+    const firstValue = firstData[key];
+    const secondValue = secondData[key];
+    const hasFirstKey = _.has(key)(firstData);
+    const hasSecondKey = _.has(key)(secondData);
 
-export default (firstConfig, secondConfig) => {
-  const firstData = parser(firstConfig);
-  const secondData = parser(secondConfig);
+    if (_.isObject(firstValue) && _.isObject(secondValue)) {
+      return getNode(key, 'object', '', '', diff(firstValue, secondValue));
+    }
 
-  const diff = (first, second) => {
-    const keys = [...Object.keys(first), ...Object.keys(second)];
-    const uniqKeys = uniq(keys);
+    if (!hasFirstKey) {
+      return getNode(key, 'add', '', secondValue);
+    }
 
-    return uniqKeys.reduce((acc, key) => {
-      const hasFirstKey = has(key)(first);
-      const hasSecondKey = has(key)(second);
-      const firstValue = first[key];
-      const secondValue = second[key];
+    if (!hasSecondKey) {
+      return getNode(key, 'delete', firstValue);
+    }
 
-      // has first, but hasn't second
-      if (hasFirstKey && !hasSecondKey) {
-        return [
-          ...acc,
-          {
-            key,
-            operation: 'delete',
-            value: firstValue,
-          },
-        ];
-      }
+    if (firstValue === secondValue) {
+      return getNode(key, 'none', firstValue);
+    }
 
-      // hasn't first, but has second
-      if (!hasFirstKey && hasSecondKey) {
-        return [
-          ...acc,
-          {
-            key,
-            operation: 'add',
-            value: secondValue,
-          },
-        ];
-      }
+    if (firstValue !== secondValue) {
+      return getNode(key, 'change', firstValue, secondValue);
+    }
 
-      // has both
-      if (hasFirstKey && hasSecondKey) {
-        // both objects
-        if (isObject(firstValue) && isObject(secondValue)) {
-          return [
-            ...acc,
-            {
-              key,
-              operation: 'none',
-              children: diff(firstValue, secondValue),
-            },
-          ];
-        }
-
-        // equals
-        if (firstValue === secondValue) {
-          return [
-            ...acc,
-            {
-              key,
-              operation: 'none',
-              value: firstValue,
-            },
-          ];
-        }
-
-        // not equals
-        if (firstValue !== secondValue) {
-          return [
-            ...acc,
-            {
-              key,
-              operation: 'change',
-              value: {
-                before: firstValue,
-                after: secondValue,
-              },
-            },
-          ];
-        }
-      }
-
-      return acc;
-    }, []);
-  };
-
-  return diff(firstData, secondData);
+    return 'unknown';
+  });
 };
+
+export default diff;
