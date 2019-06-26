@@ -26,5 +26,5 @@ export default (firstConfig, secondConfig) => {
 
   const diffData = diff(first, second);
 
-  return console.log(render(diffData));
+  return render(diffData);
 };
