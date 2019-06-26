@@ -1,5 +1,4 @@
-import diff from '../src';
-import { readFile } from '../src/parsers';
+import compare, { readFile } from '../src';
 
 const paths = ['json', 'yaml', 'ini'].map(ext => [
   `__tests__/__fixtures__/${ext}/before.${ext}`,
@@ -14,5 +13,8 @@ const nestedPaths = ['json', 'yaml', 'ini'].map(ext => [
 ]);
 
 test.each(paths.concat(nestedPaths))('compare %s files', (firstConfig, secondConfig, result) => {
-  expect(diff(firstConfig, secondConfig)).toBe(readFile(result));
+  const diff = compare(firstConfig, secondConfig);
+  const resultData = readFile(result);
+
+  expect(diff).toBe(resultData);
 });
