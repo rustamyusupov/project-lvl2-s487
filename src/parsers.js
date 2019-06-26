@@ -1,30 +1,10 @@
-import path from 'path';
-import fs from 'fs';
 import yaml from 'js-yaml';
 import ini from 'ini';
 
 const mapping = {
-  json: f => JSON.parse(f),
-  yaml: f => yaml.safeLoad(f, 'utf8'),
-  ini: f => ini.parse(f, 'utf8'),
+  json: JSON.parse,
+  yaml: yaml.safeLoad,
+  ini: ini.parse,
 };
 
-export const readFile = (filePath) => {
-  try {
-    const data = fs.readFileSync(filePath, 'utf8');
-
-    return data;
-  } catch (e) {
-    console.log('Error:', e.stack);
-  }
-
-  return null;
-};
-
-export default (filePath) => {
-  const data = readFile(filePath);
-  const ext = path.extname(filePath).replace('.', '');
-  const parsedData = mapping[ext](data);
-
-  return parsedData;
-};
+export default (ext, data) => mapping[ext](data);
