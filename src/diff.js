@@ -26,7 +26,7 @@ const diff = (firstData, secondData) => {
     }
 
     if (!hasSecondKey) {
-      return getNode(key, 'delete', firstValue);
+      return getNode(key, 'remove', firstValue);
     }
 
     if (firstValue === secondValue) {
