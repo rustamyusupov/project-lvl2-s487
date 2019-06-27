@@ -1,4 +1,5 @@
 # Gaff
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/827f0c20e22646255a1f/maintainability)](https://codeclimate.com/github/rustamyusupov/project-lvl2-s487/maintainability)
 [![Build Status](https://travis-ci.org/rustamyusupov/project-lvl2-s487.svg?branch=master)](https://travis-ci.org/rustamyusupov/project-lvl2-s487)
 
@@ -14,10 +15,10 @@
 
 [![asciicast](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl.svg)](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl)
 
-
 `gendiff <firstConfig> <secondConfig>` – show the difference between two configs (json, yaml, ini)
 
 [![asciicast](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI.svg)](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI)
 [![asciicast](https://asciinema.org/a/eZ4IKLTmzddGwKuLnTKK7nsns.svg)](https://asciinema.org/a/eZ4IKLTmzddGwKuLnTKK7nsns)
 [![asciicast](https://asciinema.org/a/FNQZ6hPDjAng40KofVsFr4CDK.svg)](https://asciinema.org/a/FNQZ6hPDjAng40KofVsFr4CDK)
 [![asciicast](https://asciinema.org/a/ErUNLFiHTFidR6kBICEPjVEhX.svg)](https://asciinema.org/a/ErUNLFiHTFidR6kBICEPjVEhX)
+[![asciicast](https://asciinema.org/a/VWKDCUGI888lVfSyLrzVCrJDx.svg)](https://asciinema.org/a/VWKDCUGI888lVfSyLrzVCrJDx)
