@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import parser from './parsers';
 import diff from './diff';
-import render from './render';
+import render from './formatters';
 
 export const readFile = (filePath) => {
   try {
@@ -14,7 +14,7 @@ export const readFile = (filePath) => {
   return null;
 };
 
-export default (firstConfig, secondConfig) => {
+export default (firstConfig, secondConfig, format) => {
   const firstData = readFile(firstConfig);
   const secondData = readFile(secondConfig);
 
@@ -26,5 +26,5 @@ export default (firstConfig, secondConfig) => {
 
   const diffData = diff(first, second);
 
-  return render(diffData);
+  return render(diffData, format);
 };
