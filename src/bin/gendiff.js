@@ -9,10 +9,11 @@ const run = () => {
   program
     .description('Compares two configuration files and shows a difference.')
     .version(version)
-    .option('-V, --version', 'output the version number')
-    .option('-f, --format <type>', 'output format')
+    .option('-f, --format [type]', 'output format', 'default')
     .arguments('<firstConfig> <secondConfig>')
-    .action((firstConfig, secondConfig) => console.log(diff(firstConfig, secondConfig)));
+    .action((firstConfig, secondConfig) => {
+      console.log(diff(firstConfig, secondConfig, program.format));
+    });
 
   program.parse(process.argv);
 };
