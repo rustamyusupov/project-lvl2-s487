@@ -1,6 +1,11 @@
 import _ from 'lodash/fp';
 
-const stringify = value => (_.isObject(value) ? '[complex value]' : `'${value}'`);
+const stringify = (value) => {
+  if (_.isObject(value)) return '[complex value]';
+  if (_.isString(value)) return `'${value}'`;
+
+  return value;
+};
 
 const operations = {
   none: () => [],

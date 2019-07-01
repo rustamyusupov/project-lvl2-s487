@@ -1,23 +1,25 @@
-import diff, { readFile } from '../src';
+import gendiff, { readFile } from '../src';
 
-const paths = ['json', 'yaml', 'ini'].map(ext => [
-  `__tests__/__fixtures__/${ext}/before.${ext}`,
-  `__tests__/__fixtures__/${ext}/after.${ext}`,
-  '__tests__/__fixtures__/result/result.txt',
-  '__tests__/__fixtures__/result/result-plain.txt',
-]);
+test.each([
+  ['json', 'plain'],
+  ['yml', 'plain'],
+  ['ini', 'plain'],
+  ['json', 'default'],
+  ['yml', 'default'],
+  ['ini', 'default'],
+  ['json', 'json'],
+  ['yml', 'json'],
+  ['ini', 'json'],
+])(
+  'compare %s files, format %s',
+  (ext, format) => {
+    const diff = gendiff(
+      `__tests__/__fixtures__/before.${ext}`,
+      `__tests__/__fixtures__/after.${ext}`,
+      format,
+    );
+    const result = readFile(`__tests__/__fixtures__/result-${format}.txt`);
 
-const nestedPaths = ['json', 'yaml', 'ini'].map(ext => [
-  `__tests__/__fixtures__/${ext}/before-nested.${ext}`,
-  `__tests__/__fixtures__/${ext}/after-nested.${ext}`,
-  '__tests__/__fixtures__/result/result-nested.txt',
-  '__tests__/__fixtures__/result/result-nested-plain.txt',
-]);
-
-test.each(paths.concat(nestedPaths))('compare %s files', (firstConfig, secondConfig, result, resultPlain) => {
-  const resultData = readFile(result);
-  const resultPlainData = readFile(resultPlain);
-
-  expect(diff(firstConfig, secondConfig, 'default')).toBe(resultData);
-  expect(diff(firstConfig, secondConfig, 'plain')).toBe(resultPlainData);
-});
+    expect(diff).toStrictEqual(result);
+  },
+);
