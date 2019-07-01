@@ -7,18 +7,18 @@
 
 `npm install -g gaff`
 
-[![asciicast](https://asciinema.org/a/RTeOVjQIR7srlglyOcE38SD2Z.svg)](https://asciinema.org/a/RTeOVjQIR7srlglyOcE38SD2Z)
+[![asciicast](https://asciinema.org/a/FnPwLgyGEMX2c7N5iV9FxOg9S.svg)](https://asciinema.org/a/FnPwLgyGEMX2c7N5iV9FxOg9S)
 
-## Run
+## Help
 
 `gendiff -h` – show help
 
-[![asciicast](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl.svg)](https://asciinema.org/a/v1hXV5bO3BuOy5l6PoOy6msrl)
+[![asciicast](https://asciinema.org/a/tmFIxOclFWmtudeVKCWoVbuis.svg)](https://asciinema.org/a/tmFIxOclFWmtudeVKCWoVbuis)
+
+## Run
 
 `gendiff <firstConfig> <secondConfig>` – show the difference between two configs (json, yaml, ini)
 
-[![asciicast](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI.svg)](https://asciinema.org/a/H8BVSZxyQj6Rw7pf4Etuc5BLI)
-[![asciicast](https://asciinema.org/a/eZ4IKLTmzddGwKuLnTKK7nsns.svg)](https://asciinema.org/a/eZ4IKLTmzddGwKuLnTKK7nsns)
-[![asciicast](https://asciinema.org/a/FNQZ6hPDjAng40KofVsFr4CDK.svg)](https://asciinema.org/a/FNQZ6hPDjAng40KofVsFr4CDK)
-[![asciicast](https://asciinema.org/a/ErUNLFiHTFidR6kBICEPjVEhX.svg)](https://asciinema.org/a/ErUNLFiHTFidR6kBICEPjVEhX)
-[![asciicast](https://asciinema.org/a/VWKDCUGI888lVfSyLrzVCrJDx.svg)](https://asciinema.org/a/VWKDCUGI888lVfSyLrzVCrJDx)
+[![asciicast](https://asciinema.org/a/XaRsGWRfylRHSIXjjPFZSLI7R.svg)](https://asciinema.org/a/XaRsGWRfylRHSIXjjPFZSLI7R)
+[![asciicast](https://asciinema.org/a/YlQOhtvVeMEGQRNc3mlwd7GFz.svg)](https://asciinema.org/a/YlQOhtvVeMEGQRNc3mlwd7GFz)
+[![asciicast](https://asciinema.org/a/QyUXB8mbwOffZm1tLv9EuiBkI.svg)](https://asciinema.org/a/QyUXB8mbwOffZm1tLv9EuiBkI)
