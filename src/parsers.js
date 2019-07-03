@@ -7,4 +7,4 @@ const mapping = {
   ini: ini.parse,
 };
 
-export default (ext, data) => mapping[ext](data);
+export default (type, data) => mapping[type](data);
