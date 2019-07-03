@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import parser from './parsers';
-import diff from './diff';
+import parse from './parsers';
+import buildAst from './buildAst';
 import render from './formatters';
 
 export default (firstConfig, secondConfig, format) => {
@@ -11,10 +11,10 @@ export default (firstConfig, secondConfig, format) => {
   const firstExt = path.extname(firstConfig).replace('.', '');
   const secondExt = path.extname(secondConfig).replace('.', '');
 
-  const firstParsed = parser(firstExt, firstData);
-  const secondParsed = parser(secondExt, secondData);
+  const firstParsed = parse(firstExt, firstData);
+  const secondParsed = parse(secondExt, secondData);
 
-  const diffData = diff(firstParsed, secondParsed);
+  const ast = buildAst(firstParsed, secondParsed);
 
-  return render(diffData, format);
+  return render(ast, format);
 };

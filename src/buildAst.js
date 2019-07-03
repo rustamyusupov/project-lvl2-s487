@@ -8,7 +8,7 @@ const getNode = (key, type, valueBefore, valueAfter = '', children = []) => ({
   children,
 });
 
-const diff = (firstData, secondData) => {
+const buildAst = (firstData, secondData) => {
   const keys = _.union(Object.keys(firstData), Object.keys(secondData));
 
   return keys.sort().map((key) => {
@@ -18,7 +18,7 @@ const diff = (firstData, secondData) => {
     const hasSecondKey = _.has(key)(secondData);
 
     if (_.isObject(firstValue) && _.isObject(secondValue)) {
-      return getNode(key, 'object', '', '', diff(firstValue, secondValue));
+      return getNode(key, 'object', '', '', buildAst(firstValue, secondValue));
     }
 
     if (!hasFirstKey) {
@@ -41,4 +41,4 @@ const diff = (firstData, secondData) => {
   });
 };
 
-export default diff;
+export default buildAst;
