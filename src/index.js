@@ -4,7 +4,7 @@ import parser from './parsers';
 import diff from './diff';
 import render from './formatters';
 
-export const readFile = (filePath) => {
+const readFile = (filePath) => {
   try {
     return fs.readFileSync(filePath, 'utf8');
   } catch (e) {
