@@ -15,7 +15,7 @@ const stringify = (value, depth) => {
 };
 
 const operations = {
-  none: ({ key, valueBefore }, depth) => `${getIndents(depth + increment)}${key}: ${stringify(valueBefore, depth + increment)}`,
+  unchanged: ({ key, valueBefore }, depth) => `${getIndents(depth + increment)}${key}: ${stringify(valueBefore, depth + increment)}`,
   add: ({ key, valueAfter }, depth) => `${defaultIndent}${getIndents(depth)}+ ${key}: ${stringify(valueAfter, depth + increment)}`,
   remove: ({ key, valueBefore }, depth) => `${defaultIndent}${getIndents(depth)}- ${key}: ${stringify(valueBefore, depth + increment)}`,
   change: ({ key, valueBefore, valueAfter }, depth) => [

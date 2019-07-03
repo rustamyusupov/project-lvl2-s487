@@ -30,7 +30,7 @@ const diff = (firstData, secondData) => {
     }
 
     if (firstValue === secondValue) {
-      return getNode(key, 'none', firstValue);
+      return getNode(key, 'unchanged', firstValue);
     }
 
     if (firstValue !== secondValue) {

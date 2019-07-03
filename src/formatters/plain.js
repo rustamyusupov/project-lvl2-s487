@@ -8,7 +8,7 @@ const stringify = (value) => {
 };
 
 const operations = {
-  none: () => [],
+  unchanged: () => [],
   add: ({ key, valueAfter }, path) => `Property '${path}${key}' was added with value: ${stringify(valueAfter)}`,
   remove: ({ key }, path) => `Property '${path}${key}' was removed`,
   change: ({ key, valueBefore, valueAfter }, path) => `Property '${path}${key}' was updated. From ${stringify(valueBefore)} to ${stringify(valueAfter)}`,
