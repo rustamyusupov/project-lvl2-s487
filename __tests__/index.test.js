@@ -1,4 +1,16 @@
-import gendiff, { readFile } from '../src';
+import fs from 'fs';
+
+import gendiff from '../src';
+
+const readFile = (filePath) => {
+  try {
+    return fs.readFileSync(filePath, 'utf8');
+  } catch (e) {
+    console.log('Error:', e.stack);
+  }
+
+  return null;
+};
 
 test.each([
   ['json', 'plain'],
