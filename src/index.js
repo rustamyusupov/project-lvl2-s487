@@ -11,10 +11,10 @@ export default (firstConfig, secondConfig, format) => {
   const firstExt = path.extname(firstConfig).replace('.', '');
   const secondExt = path.extname(secondConfig).replace('.', '');
 
-  const first = parser(firstExt, firstData);
-  const second = parser(secondExt, secondData);
+  const firstParsed = parser(firstExt, firstData);
+  const secondParsed = parser(secondExt, secondData);
 
-  const diffData = diff(first, second);
+  const diffData = diff(firstParsed, secondParsed);
 
   return render(diffData, format);
 };
