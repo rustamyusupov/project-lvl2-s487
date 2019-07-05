@@ -9,7 +9,7 @@ const run = () => {
   program
     .description('Compares two configuration files and shows a difference.')
     .version(version)
-    .option('-f, --format [type]', 'output format', 'default')
+    .option('-f, --format [type]', 'output format', 'tree')
     .arguments('<firstConfig> <secondConfig>')
     .action((firstConfig, secondConfig) => {
       console.log(diff(firstConfig, secondConfig, program.format));
