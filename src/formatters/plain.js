@@ -15,14 +15,9 @@ const operations = {
   object: ({ key, children }, path, render) => render(children, `${path}${key}.`),
 };
 
-const render = (data, path = '') => {
-  const result = data.reduce((acc, node) => {
-    const parsed = operations[node.type](node, path, render);
-
-    return [...acc, parsed];
-  }, []);
-
-  return _.flatten(result).join('\n');
-};
+const render = (data, path = '') => data
+  .filter(({ type }) => type !== 'unchanged')
+  .map(node => operations[node.type](node, path, render))
+  .join('\n');
 
 export default render;
