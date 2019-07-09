@@ -37,7 +37,7 @@ const buildAst = (firstData, secondData) => {
       return getNode(key, 'change', firstValue, secondValue);
     }
 
-    return new Error('Unknown type');
+    throw new Error(`Unknown type, first value is: ${firstValue}, second value is: ${secondValue}.`);
   });
 };
 
